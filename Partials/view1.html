@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div ng-controller="SimpleController" style="background-color:burlywood;">
+        Name:
+        <br />
+        <input type="text" ng-model="filter.name" />
+        <ul>
+            <li ng-repeat="cust in customers | filter:filter.name | orderBy:city">
+                {{cust.name}} - {{cust.city}}
+            </li>
+        </ul>
+        <br />
+        Name:
+        <br />
+        <input type="text" ng-model="newCustomer.name" />
+        <br />
+        City:
+        <br />
+        <input type="text" ng-model="newCustomer.city" />
+        <br />
+        <input type="button" ng-click="addCustomer()" value="Add Customer"/>
+        <br />
+        <a href="Partials/view2.html">View2</a>
+    </div>
+</body>
+</html>

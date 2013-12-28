@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div ng-controller="SimpleController" style="background-color:aqua;">
+        Name:
+        <br />
+        <input type="text" ng-model="name" />
+        <ul>
+            <li ng-repeat="cust in customers | filter:name | orderBy:city">
+                {{cust.name}} - {{cust.city}}
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

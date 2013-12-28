@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="demoApp">
+<head>
+    <title></title>
+    <script type="text/javascript" src="Scripts/angular.js"></script>
+</head>
+<body>
+    <div>
+        <!--Placeholder-->
+        <div ng-view=""></div>
+    </div>
+    <script>
+        var demoApp = angular.module('demoApp', []);
+
+        demoApp.config(function ($routeProvider) {
+            $routeProvider
+            .when('/View1',
+            {
+                controller: 'SimpleController',
+                templateUrl: 'Partials/view1.html'
+            })
+            .when('/View2',
+            {
+                controller: 'SimpleController',
+                templateUrl: 'Partials/view2.html'
+            })
+            .otherwise({ redirectTo: '/View1' });
+        });
+
+        demoApp.controller('SimpleController', function SimpleController($scope) {
+            $scope.customers = [
+                    { name: 'David', city: 'Rehovot' },
+                    { name: 'Rachel', city: 'Rehovot' },
+                    { name: 'Mosh', city: 'SdeYoav' },
+                    { name: 'Haim', city: 'SdeYoav' },
+                    { name: 'Nachman', city: 'Beer Sheva' }];
+
+            $scope.addCustomer = function () {
+                $scope.customers.push({ name: $scope.newCustomer.name, city: $scope.newCustomer.city });
+            };
+        });
+    </script>
+</body>
+</html>
